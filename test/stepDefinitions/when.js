@@ -106,7 +106,7 @@ defineSupportCode(function({ When }) {
     filtro.selecionarCnaeFuncionalidade(cnae);
   });
 
-  When(/^Seleciono o CNAE Cliente  "([^"]*)"$/, function(cnae) {
+  When(/^Seleciono o CNAE Cliente "([^"]*)"$/, function(cnae) {
     filtro.selecionarCnaeCliente(cnae);
   });
 

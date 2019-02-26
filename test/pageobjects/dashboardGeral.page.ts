@@ -22,10 +22,10 @@ export class Geral extends DashBoard {
     public grafTopFunc: Grafico
     public grafUsoFunc: Grafico
     public x: string
-    public graftop10prod:any
-    public top10client:any
-    public top10func:any
-    public top10funcprod:any
+    public selectorGrafTop10roduto:any
+    public selecttorGraftop10cliente:any
+    public selectorGraftop10funcionalidades:any
+    public selectorTop10funcionalidadeProduto:any
 
     constructor(){
         super()
@@ -37,11 +37,11 @@ export class Geral extends DashBoard {
         this.grafTopFunc = new Grafico(this.topFunc)
         this.grafUsoFunc = new Grafico(this.usoFunc)
 
-        ////alteração Paulo
-        this.graftop10prod='#geral-top10-clientes-bar-chart > div > div:nth-child(2) > div > div'
-        this.top10client='#geral-top10-clientes-bar-chart > div > div:nth-child(2)'
-        this.top10func='#top10-funcionalidades-bar-chart'
-        this.top10funcprod='#geral-uso-diario-line-chart > div'
+        ////alteração Paulo selector
+        this.selectorGrafTop10roduto='#geral-top10-produtos-bar-chart > div > div'
+        this.selecttorGraftop10cliente='#geral-top10-clientes-bar-chart > div > div:nth-child(2)'
+        this.selectorGraftop10funcionalidades='#top10-funcionalidades-bar-chart'
+        this.selectorTop10funcionalidadeProduto='#geral-uso-diario-line-chart > div'
     }
     //Botões
     get btnTotal(): WebElement { return browser.element('//*[@id="total"]'); }

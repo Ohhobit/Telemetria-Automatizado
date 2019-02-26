@@ -104,7 +104,7 @@ export module navegacao {
                 break;
         }
 
-        browser.pause(500);
+        browser.pause(5000);
         return assert.equal(dashboard.currentDashboard.getText().toUpperCase(), DashName);
 
     }

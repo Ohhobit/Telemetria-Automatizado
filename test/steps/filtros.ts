@@ -6,23 +6,24 @@ import { fail } from "assert";
 const dashboard: DashBoard = new DashBoard();
 export module filtro {
     export function selecionarBase(base: string) {
-        if (dashboard.base.isVisible()) {            
-            dashboard.base.waitForVisible()
-            dashboard.base.addValue(base);
-            dashboard.waitSearch();
-            dashboard.base.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible()
-            this.habilitarFiltros('base')
-            dashboard.base.waitForVisible()
-            dashboard.base.addValue(base);
-            dashboard.waitSearch();
-            dashboard.base.addValue('\n')
-            dashboard.waitSearch();
-        }   
-        
+        if (base.toLowerCase()!='vazio'){
+            if (dashboard.base.isVisible()) {            
+                dashboard.base.waitForVisible()
+                dashboard.base.addValue(base);
+                dashboard.waitSearch();
+                dashboard.base.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible()
+                this.habilitarFiltros('base')
+                dashboard.base.waitForVisible()
+                dashboard.base.addValue(base);
+                dashboard.waitSearch();
+                dashboard.base.addValue('\n')
+                dashboard.waitSearch();
+            }   
+        }    
     }
 
     export function selecionarCaminho(caminho: string) {
@@ -126,38 +127,45 @@ export module filtro {
     }
 
     export function selecionarCnaeFuncionalidade(cnae: string) {
-        if (dashboard.cnaeFuncionalidade.isVisible()) {
-            dashboard.cnaeFuncionalidade.addValue(cnae);
-            dashboard.waitSearch();
-            dashboard.cnaeFuncionalidade.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('cnae funcionalidade');
-            dashboard.cnaeFuncionalidade.waitForVisible();
-            dashboard.cnaeFuncionalidade.addValue(cnae);
-            dashboard.waitSearch();
-            dashboard.cnaeFuncionalidade.addValue('\n')
-            dashboard.waitSearch();
-        }
+        
+        if (cnae.toLowerCase()!='vazio'){
+            
+            if (dashboard.cnaeFuncionalidade.isVisible()) {
+                dashboard.cnaeFuncionalidade.addValue(cnae);
+                dashboard.waitSearch();
+                dashboard.cnaeFuncionalidade.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('cnae funcionalidade');
+                dashboard.cnaeFuncionalidade.waitForVisible();
+                dashboard.cnaeFuncionalidade.addValue(cnae);
+                dashboard.waitSearch();
+                dashboard.cnaeFuncionalidade.addValue('\n')
+                dashboard.waitSearch();
+        }   }
     }
 
     export function selecionarCnaeCliente(cnae: string) {
-        if (dashboard.cnaeCliente.isVisible()) {
-            dashboard.cnaeCliente.addValue(cnae);
-            dashboard.waitSearch();
-            dashboard.cnaeCliente.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('cnae cliente');
-            dashboard.cnaeCliente.waitForVisible();
-            dashboard.cnaeCliente.addValue(cnae);
-            dashboard.waitSearch();
-            dashboard.cnaeCliente.addValue('\n')
-            dashboard.waitSearch();
+     
+        if (cnae.toLowerCase()!='vazio'){
+
+            if (dashboard.cnaeCliente.isVisible()) {
+                dashboard.cnaeCliente.addValue(cnae);
+                dashboard.waitSearch();
+                dashboard.cnaeCliente.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('cnae cliente');
+                dashboard.cnaeCliente.waitForVisible();
+                dashboard.cnaeCliente.addValue(cnae);
+                dashboard.waitSearch();
+                dashboard.cnaeCliente.addValue('\n')
+                dashboard.waitSearch();
+            }
         }
     }
 
@@ -270,9 +278,13 @@ export module filtro {
     }
 
     export function selecionarProduto(produto: string) {
+        
+      if (produto.toLowerCase()!='vazio' ){
+        
         if (dashboard.produto.isVisible()){
             dashboard.produto.addValue(produto);
             dashboard.waitSearch();
+            browser.pause(50000)
             dashboard.produto.addValue('\n')
             dashboard.waitSearch();
         }
@@ -285,6 +297,7 @@ export module filtro {
             dashboard.produto.addValue('\n')
             dashboard.waitSearch();
         }
+      }   
     }
 
     export function selecionarSemUso(semUso: string) {

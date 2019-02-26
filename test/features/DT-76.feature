@@ -3,7 +3,7 @@
 @TestExcutionKey=DTT-84
 @DTT-84
 @DT-76
-Feature: Filtrar utilizando filtro de Data
+Feature: Realizar uma consulta no dashboard Geral utilizando todos os filtros
 
 
 	@DTT-89 @DTT-75
@@ -13,15 +13,15 @@ Feature: Filtrar utilizando filtro de Data
 	And Seleciono a base "<base>"
 	And Seleciono o produto "<produto>"
 	And Seleciono o cliente "<cliente>"
-	And Seleciono o CNAE "<cnae>"
-	And Seleciono a data inicial "01/12/2017"
-	And Seleciono a data final "31/12/2017"
+	And Seleciono o CNAE Cliente "<cnae>"
+	And Seleciono a data inicial "01/12/2018"
+	And Seleciono a data final "31/12/2018"
 	And Clico em consultar
 	Then O sistema demonstrará as informações de acordo com os filtros utilizados
 	Examples:
 	|#  | filtro              |base  | cliente| produto  |cnae                       |
 	|1  | Cliente             |vazio | 000002 | vazio    |vazio                      |
-	# |2  | Cliente             |900000| 000002 | vazio    |vazio                      |
+	|2  | Cliente             |900000| 000002 | vazio    |vazio                      |
 	# |3  | Cliente,CNAE        |900000| 000002 | vazio    |treinamento em informática |
 	# |4  | Cliente,CNAE        |vazio | 000002 | vazio    |treinamento em informática |
 	# |5  | Cliente,Produto     |900000| 000002 | finapagar|vazio                      |

@@ -48,7 +48,7 @@ defineSupportCode(function({ Then }) {
   });
 
   Then(/^O sistema demonstrará as informações de acordo com os filtros utilizados$/, function(){
-    //verificarResultadoConsulta()
+    verificarResultadoConsulta()
     
 
   })
@@ -77,7 +77,7 @@ defineSupportCode(function({ Then }) {
 
   Then (/^O gráfico "([^"]*)" devem carregar os valores de acordo com o filtro de data$/,function(dasboard){
     
-    ValidaGraficoDashboardGeral(dasboard)
+    ValidaGraficoDashboarddGeral(dasboard)
     
       
   })

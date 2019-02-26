@@ -16,6 +16,11 @@ import { Canvas } from "../pageobjects/canvas.page";
 
 var assert = require('assert');
 
+function assertDiff(results) {
+  results.forEach((result) => assert.ok(result.isExactSameImage));
+}
+
+
 export function verificarElementosVisaoGeral(){
   let visaoGeral: VisaoGeral = new VisaoGeral()
   
@@ -36,12 +41,17 @@ export function verificarElementosVisaoGeral(){
    
 }
 
+
+    
+
 export function verificarResultadoConsulta() {
    // Printando todos os graficos e grids inicialmente na tela
   let viewport:any
   let dashboard: DashBoard = new DashBoard()
   let result:boolean
+  const width=[1410, 900 ]
   let DashboardName = dashboard.currentDashboard.getText().toLowerCase()
+
   if(dashboard.checkForMsgs()){
     fail('Ocorreu um erro ou aviso ao gerar os gráficos do dashboard '+DashboardName+' ')
   }
@@ -56,7 +66,9 @@ export function verificarResultadoConsulta() {
       // Top 10 produtos
       geral.waitSearch();
       geral.grafTopProd.conteudo.waitForVisible()
-      assert.equal(true,geral.grafTopProd.conteudo.isVisible())
+      // assert.equal(true,geral.grafTopProd.conteudo.isVisible())
+      //@ts-ignore
+      assertDiff(browser.checkElement(geral.selectorGrafTop10roduto, {width}))
 
       // Grid todos os produtos
       geral.btnTodosProdutos.click()
