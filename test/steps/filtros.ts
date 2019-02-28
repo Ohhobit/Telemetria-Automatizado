@@ -343,11 +343,15 @@ export module filtro {
             dashboard.filtros.waitForVisible();
             dashboard.filtros.click();
             dashboard.filtrosSearch.waitForVisible();
-            filtros.forEach((filtro) => {
-                dashboard.filtrosSearch.setValue(filtro)
+            console.log('colocando o filtro')
+            console.log(filtro.toLowerCase(),'filtro letra minuscula')
+            console.log(filtros,'filtros')
+            filtros.forEach((filtros​​) => {
+                console.log(filtros,' filtros dentro do for')
+                dashboard.filtrosSearch.setValue(filtros)
                 browser.pause(500);
                 dashboard.filtrosSearch.addValue('\n');
-                dashboard.campo(filtro).waitForVisible();
+                dashboard.campo(filtros).waitForVisible();
             })
             //Este clique serve apenas para fechar o campo de pesquisa
             dashboard.dataAtual.click();

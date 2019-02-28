@@ -7,8 +7,8 @@ Feature: Realizar uma consulta no dashboard Geral utilizando todos os filtros
 
 
 	@DTT-89 @DTT-75
-    Scenario Outline:  Realizar uma consulta no dashboard Geral utilizando todos os filtros
-	Given Estou no dashboard "Geral" do setor "Bimer"
+    Scenario Outline:  Realizar uma consulta no dashboard Geral utilizando todos os filtros: Cena <n>
+	Given Estou no dashboard "Geral" do setor "Shop"
 	When Habilito o filtro de "<filtro>"
 	And Seleciono a base "<base>"
 	And Seleciono o produto "<produto>"
@@ -19,18 +19,18 @@ Feature: Realizar uma consulta no dashboard Geral utilizando todos os filtros
 	And Clico em consultar
 	Then O sistema demonstrará as informações de acordo com os filtros utilizados
 	Examples:
-	|#  | filtro              |base  | cliente| produto  |cnae                       |
-	|1  | Cliente             |vazio | 000002 | vazio    |vazio                      |
-	|2  | Cliente             |900000| 000002 | vazio    |vazio                      |
-	# |3  | Cliente,CNAE        |900000| 000002 | vazio    |treinamento em informática |
-	# |4  | Cliente,CNAE        |vazio | 000002 | vazio    |treinamento em informática |
+	|n  | filtro              |base  | cliente| produto  |cnae                       |
+	|1  | Cliente             |vazio | 671123 | vazio    |vazio                      |
+	# |2  | Cliente             |900000| 000002 | vazio    |vazio                      |
+	# |3  | Cliente,CNAE Cliente  |900000| 000002 | vazio    |treinamento em informática |
+	# |4  | Cliente,CNAE Cliente       |vazio | 000002 | vazio    |treinamento em informática |
 	# |5  | Cliente,Produto     |900000| 000002 | finapagar|vazio                      |
 	# |6  | Cliente,Produto     |vazio | 000002 | finapagar|vazio                      |
-	# |7  | Cliente,Produto,CNAE|vazio | 000002 | finapagar|treinamento em informática |
-	# |8  | Cliente,Produto,CNAE|900000| 000002 | finapagar|treinamento em informática |
+	# |7  | Cliente,Produto,CNAE Cliente|vazio | 000002 | finapagar|treinamento em informática |
+	# |8  | Cliente,Produto,CNAE Cliente|900000| 000002 | finapagar|treinamento em informática |
 	# |9  | CNAE                |vazio | vazio  | vazio    |treinamento em informática |
 	# |10 | CNAE                |900000| vazio  | vazio    |treinamento em informática |
 	# |11 | Produto             |900000| vazio  | finapagar|vazio                      |
 	# |12 | Produto             |vazio | vazio  | finapagar|vazio                      |
-	# |13 | Produto,CNAE        |900000| vazio  | finapagar|treinamento em informática |
-	# |14 | Produto,CNAE        |vazio | vazio  | finapagar|treinamento em informática |
+	# |13 | Produto,CNAE Cliente|900000| vazio  | finapagar|treinamento em informática |
+	# |14 | Produto,CNAE Cliente|vazio | vazio  | finapagar|treinamento em informática |

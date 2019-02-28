@@ -70,27 +70,32 @@ export function verificarResultadoConsulta() {
       //@ts-ignore
       assertDiff(browser.checkElement(geral.selectorGrafTop10roduto, {width}))
 
-      // Grid todos os produtos
+       // Grid todos os produtos
+      geral.btnTodosProdutos.waitForEnabled()
+      // browser.pause(50000)
       geral.btnTodosProdutos.click()
       if(dashboard.checkForMsgs()){
         fail('Ocorreu um erro ou aviso ao fazer a consulta')
       }
       geral.waitSearch()
       geral.gridProduto.btnGridMenu.waitForVisible()
+     //@ts-ignore
+      assertDiff(browser.checkelement(geral.selectorGrafTop10rodutoGridTodosProdutos, {width}))
 
-      // Como tenho que fechar o modal primeiramente , guardo o resultado e depois faço o assert
-      result = geral.gridProduto.btnGridMenu.isVisible()
+       // Como tenho que fechar o modal primeiramente , guardo o resultado e depois faço o assert
       geral.gridProduto.btnClose.click()
       if(dashboard.checkForMsgs()){
-        fail('Ocorreu um erro ou aviso ao carregar o modal Produtos no dashboard geral')
-      }
-      geral.gridProduto.btnGridMenu.waitForVisible(5000,true)
-      assert.equal(result,true,'O modal Produtos no dashboard geral apresentou diferença')
+         fail('Ocorreu um erro ou aviso ao carregar o modal Produtos no dashboard geral')
+       }
+
+      
      
-      // Grafico total
+      // Grafico top 10 cliente : total 
       geral.waitSearch()
       geral.grafTotal.conteudo.waitForVisible();
-      assert.equal(true, geral.grafTotal.conteudo.isVisible())
+      // assert.equal(true, geral.grafTotal.conteudo.isVisible())
+      //@ts-ignore
+      assertDiff(browser.checkElement(geral.selecttorGraftop10clienteTotal,{width} ))
 
       // Grafico media
       geral.btnMedia.click()
@@ -99,7 +104,8 @@ export function verificarResultadoConsulta() {
       }
       geral.waitSearch()
       geral.grafMedia.conteudo.waitForVisible()
-      assert.equal(true, geral.grafMedia.conteudo.isVisible());
+      //@ts-ignore
+      assertDiff(browser.checkElement(geral.selecttorGraftop10clientemedia,{width} ))
       
       // Grafico sem recorrencia
       geral.btnSemRecorrencia.click()
@@ -108,7 +114,8 @@ export function verificarResultadoConsulta() {
       }
       geral.waitSearch()
       geral.grafSemRecorrencia.conteudo.waitForVisible()
-      assert.equal(true,geral.grafSemRecorrencia.conteudo.isVisible())
+      //@ts-ignore
+      assertDiff(browser.checkElement(geral.selecttorGraftop10clienteSemrecorrencia ,{width} ))
       
       // Grafico top func
       geral.waitSearch()

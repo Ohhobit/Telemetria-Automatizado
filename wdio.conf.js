@@ -7,7 +7,7 @@ var VisualRegressionCompare = require('wdio-visual-regression-cucumber-service/c
 function getScreenshotName(basePath) {
     return function (context) {
         var type = context.type;
-        var testName = context.test.feature;
+        var testName = context.test.scenario;
         var scenario = context.test.scenario.split(" ")
         var example = scenario[scenario.length - 1]
         var browserName = 'chrome'
@@ -19,7 +19,9 @@ function getScreenshotName(basePath) {
 }
 
 exports.config = {
-    execArgv: ['--inspect'],
+    debug: true,
+
+    execArgv: ['--inspect=127.0.0.1:5859'],
     // ==================
     // Specify Test Files
     // ==================

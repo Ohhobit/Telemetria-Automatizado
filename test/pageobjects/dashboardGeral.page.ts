@@ -23,9 +23,14 @@ export class Geral extends DashBoard {
     public grafUsoFunc: Grafico
     public x: string
     public selectorGrafTop10roduto:any
-    public selecttorGraftop10cliente:any
-    public selectorGraftop10funcionalidades:any
+    public selecttorGraftop10clienteTotal:any
+    public selecttorGraftop10clienteSemrecorrencia:any
+    public selecttorGraftop10clientemedia:any
+    public selectorGraftop10funcionalidades:any    
     public selectorTop10funcionalidadeProduto:any
+    public selectorGrafTop10rodutoGridTodosProdutos :any
+
+
 
     constructor(){
         super()
@@ -37,11 +42,24 @@ export class Geral extends DashBoard {
         this.grafTopFunc = new Grafico(this.topFunc)
         this.grafUsoFunc = new Grafico(this.usoFunc)
 
-        ////alteração Paulo selector
+        ////alteração Paulo selector(Coloquei o selector dessa forma pois o visualregresion não aceita xpath)
+          ///Grafícos do dashboard geral
         this.selectorGrafTop10roduto='#geral-top10-produtos-bar-chart > div > div'
-        this.selecttorGraftop10cliente='#geral-top10-clientes-bar-chart > div > div:nth-child(2)'
+        this.selecttorGraftop10clienteTotal='#geral-top10-clientes-bar-chart > div > div:nth-child(2)'
+        this.selecttorGraftop10clienteSemrecorrencia='#geral-top10-clientes-bar-chart > div > div:nth-child(3)'
+        this.selecttorGraftop10clientemedia='#geral-top10-clientes-bar-chart > div > div:nth-child(4)'
         this.selectorGraftop10funcionalidades='#top10-funcionalidades-bar-chart'
         this.selectorTop10funcionalidadeProduto='#geral-uso-diario-line-chart > div'
+      
+        ///// 
+
+        this.selectorGrafTop10rodutoGridTodosProdutos='#body > div.modal-wrapper > div > div.modal-dialog.ng-scope > div.modal-content.modal-custom-size.opened > div.modal-body.ng-scope'
+
+
+         
+
+
+
     }
     //Botões
     get btnTotal(): WebElement { return browser.element('//*[@id="total"]'); }
