@@ -117,15 +117,19 @@ export function verificarResultadoConsulta() {
       //@ts-ignore
       assertDiff(browser.checkElement(geral.selecttorGraftop10clienteSemrecorrencia ,{width} ))
       
-      // Grafico top func
+      // Grafico top funcionalidades
       geral.waitSearch()
       geral.grafTopFunc.conteudo.waitForVisible()
-      assert.equal(true, geral.grafTopFunc.conteudo.isVisible())
+      //@ts-ignore
+      assertDiff(browser.checkElement(geral.selectorGraftop10funcionalidades,{width}))
+     
 
       // Grafico uso diario
       geral.waitSearch()
       geral.grafUsoFunc.conteudo.waitForVisible()
-      assert.equal(true, geral.grafUsoFunc.conteudo.isVisible())
+      //@ts-ignorets-ignore
+      assertDiff(browser.checkElement(geral.selectorTop10funcionalidadeProduto,{width}))
+      // assert.equal(true, geral.grafUsoFunc.conteudo.isVisible())
       break;
     
     case 'produto':
