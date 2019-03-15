@@ -284,7 +284,7 @@ export module filtro {
         if (dashboard.produto.isVisible()){
             dashboard.produto.addValue(produto);
             dashboard.waitSearch();
-            browser.pause(50000)
+            // browser.pause(50000)
             dashboard.produto.addValue('\n')
             dashboard.waitSearch();
         }
@@ -343,11 +343,7 @@ export module filtro {
             dashboard.filtros.waitForVisible();
             dashboard.filtros.click();
             dashboard.filtrosSearch.waitForVisible();
-            console.log('colocando o filtro')
-            console.log(filtro.toLowerCase(),'filtro letra minuscula')
-            console.log(filtros,'filtros')
-            filtros.forEach((filtros​​) => {
-                console.log(filtros,' filtros dentro do for')
+            filtros.forEach((filtros) => {
                 dashboard.filtrosSearch.setValue(filtros)
                 browser.pause(500);
                 dashboard.filtrosSearch.addValue('\n');

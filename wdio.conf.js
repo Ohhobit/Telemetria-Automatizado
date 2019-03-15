@@ -107,8 +107,10 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
+    
     // Maciel-PC
     //  baseUrl: 'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2F172.16.72.23:8000%2Fapi%2Fretorno-passaporte%2F',
+    
     //TesteDNT
     baseUrl:'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2Ftelemetria.alterdata.com.br%2Fapi%2Fretorno-passaporte%2F',
 

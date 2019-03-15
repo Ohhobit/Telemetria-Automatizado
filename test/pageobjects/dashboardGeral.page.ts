@@ -28,7 +28,7 @@ export class Geral extends DashBoard {
     public selecttorGraftop10clientemedia:any
     public selectorGraftop10funcionalidades:any    
     public selectorTop10funcionalidadeProduto:any
-    public selectorGrafTop10rodutoGridTodosProdutos :any
+    public selectorGrafTop10produtoGridTodosProdutos :any
 
 
 
@@ -53,7 +53,7 @@ export class Geral extends DashBoard {
       
         ///// 
 
-        this.selectorGrafTop10rodutoGridTodosProdutos='#body > div.modal-wrapper > div > div.modal-dialog.ng-scope > div.modal-content.modal-custom-size.opened > div.modal-body.ng-scope'
+        this.selectorGrafTop10produtoGridTodosProdutos='#grid1'
 
 
          

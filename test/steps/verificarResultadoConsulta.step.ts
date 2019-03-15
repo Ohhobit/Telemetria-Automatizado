@@ -80,7 +80,7 @@ export function verificarResultadoConsulta() {
       geral.waitSearch()
       geral.gridProduto.btnGridMenu.waitForVisible()
      //@ts-ignore
-      assertDiff(browser.checkelement(geral.selectorGrafTop10rodutoGridTodosProdutos, {width}))
+      assertDiff(browser.checkElement(geral.selectorGrafTop10produtoGridTodosProdutos, {width}))
 
        // Como tenho que fechar o modal primeiramente , guardo o resultado e depois faço o assert
       geral.gridProduto.btnClose.click()

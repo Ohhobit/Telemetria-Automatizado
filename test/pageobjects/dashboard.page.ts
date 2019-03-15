@@ -143,7 +143,7 @@ export class DashBoard extends Page {
             case 'peso abaixo de':
                 return this.pesoAbaixo
             default:
-                console.log(campoNome)
+                // console.log(campoNome)
                 break
         }
     }
