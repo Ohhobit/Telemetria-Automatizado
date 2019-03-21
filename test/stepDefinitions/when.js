@@ -96,13 +96,14 @@ defineSupportCode(function({ When }) {
 
   When(/^Seleciono as? funcionalidades? "([^"]*)"$/, function(funcionalidade) {
     filtro.selecionarFuncionalidade(funcionalidade);
+  
   });
 
   When(/^Seleciono os? caminhos? "([^"]*)"$/, function(caminho) {
     filtro.selecionarCaminho(caminho);
   });
 
-  When(/^Seleciono o CNAE Funcionalidade  "([^"]*)"$/, function(cnae) {
+  When(/^Seleciono o CNAE Funcionalidade "([^"]*)"$/, function(cnae) {
     filtro.selecionarCnaeFuncionalidade(cnae);
   });
 

@@ -140,13 +140,20 @@ export function verificarResultadoConsulta() {
      
       // Grafico uso diario
       produto.waitSearch()
-      produto.grafUsoDiario.conteudo.waitForVisible()
-      assert.equal(true, produto.grafUsoDiario.conteudo.isVisible())
+      if(dashboard.checkForMsgs()){
+        fail('Ocorreu um erro ou aviso ao carregar os gráficos do  dashboard Produto')
+      }
+      produto.selectorUsoDiarioDasFuncionalidadesPorProduto.waitForVisible()
+      //@ts-ignore
+      assertDiff(browser.checkElemet(produto.selectorUsoDiarioDasFuncionalidadesPorProduto,{width}))
+      
      
       // Grid uso das funcionalidades
       produto.waitSearch()
-      produto.gridUsoDasFuncs.btnGridMenu.waitForVisible()
-      assert.equal(true,produto.gridUsoDasFuncs.btnGridMenu.isVisible())
+      produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho.waitForVisible()
+      //@ts-ignore
+      assertDiff(browser.CheckElement(produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho,{width}))
+      
 
       // Grid Cliente
       produto.btnClientes.click();
@@ -155,13 +162,8 @@ export function verificarResultadoConsulta() {
       }
       produto.waitSearch()
       produto.gridClientes.btnGridMenu.waitForVisible();
-      result = produto.gridClientes.btnGridMenu.isVisible()
-      produto.gridClientes.btnClose.click()
-      if(dashboard.checkForMsgs()){
-        fail('Ocorreu um erro ou aviso ao carregar o modal Produtos no dashboard geral')
-      }
-      produto.gridClientes.btnClose.waitForVisible(5000,true)
-      assert.equal(result,true,'O modal Clientes no dashboard Produto apresentou diferença')
+      //@ts-ignore
+      assertDiff(browser.CheckElement(produto.selectorGridClientes,{width}))
       break;
 
     case 'funcionalidade':

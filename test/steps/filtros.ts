@@ -4,7 +4,8 @@ import { DashBoard } from "../pageobjects/dashboard.page";
 import { fail } from "assert";
 
 const dashboard: DashBoard = new DashBoard();
-export module filtro {
+export module filtro 
+{
     export function selecionarBase(base: string) {
         if (base.toLowerCase()!='vazio'){
             if (dashboard.base.isVisible()) {            
@@ -27,56 +28,66 @@ export module filtro {
     }
 
     export function selecionarCaminho(caminho: string) {
-        if (dashboard.caminho.isVisible()) {
-            dashboard.caminho.addValue(caminho);
-            dashboard.waitSearch();
-            dashboard.caminho.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible()
-            this.habilitarFiltros('caminho')
-            dashboard.caminho.waitForVisible()
-            dashboard.caminho.addValue(caminho);
-            dashboard.waitSearch();
-            dashboard.caminho.addValue('\n')
-            dashboard.waitSearch();
+        if (caminho.toLowerCase()!='vazio'){ 
+            if (dashboard.caminho.isVisible()) {
+                dashboard.caminho.addValue(caminho);
+                dashboard.waitSearch();
+                dashboard.caminho.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible()
+                this.habilitarFiltros('caminho')
+                dashboard.caminho.waitForVisible()
+                dashboard.caminho.addValue(caminho);
+                dashboard.waitSearch();
+                dashboard.caminho.addValue('\n')
+                dashboard.waitSearch();
+            }  
         }
     }
 
     export function selecionarCaracteristica(caracteristica: string) {
-        if (dashboard.caracteristica.isVisible()) {
-            dashboard.caracteristica.addValue(caracteristica);
-            dashboard.waitSearch();
-            dashboard.caracteristica.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible()
-            this.habilitarFiltros('característica')
-            dashboard.caracteristica.waitForVisible()
-            dashboard.caracteristica.addValue(caracteristica);
-            dashboard.waitSearch();
-            dashboard.caracteristica.addValue('\n')
-            dashboard.waitSearch();
-        }
+        if(caracteristica.toLowerCase()!="vazio"){
+            if (dashboard.caracteristica.isVisible()) {
+                dashboard.caracteristica.addValue(caracteristica);
+                dashboard.waitSearch();
+                dashboard.confimrcaracter(caracteristica).waitForVisible()
+                dashboard.confimrcaracter(caracteristica).click()
+                dashboard.caracteristica.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible()
+                this.habilitarFiltros('característica')
+                dashboard.caracteristica.waitForVisible()
+                dashboard.caracteristica.addValue(caracteristica);
+                dashboard.waitSearch();
+                dashboard.confimrcaracter(caracteristica).waitForVisible()
+                dashboard.confimrcaracter(caracteristica).click()
+                dashboard.caracteristica.addValue('\n')
+                dashboard.waitSearch();
+            }
+       }
     }
 
     export function selecionarCategoria(categoria: string) {
-        if (dashboard.categoria.isVisible()) {            
-            dashboard.categoria.addValue(categoria);
-            dashboard.waitSearch();
-            dashboard.categoria.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible()
-            this.habilitarFiltros('categoria')
-            dashboard.categoria.waitForVisible()
-            dashboard.categoria.addValue(categoria);
-            dashboard.waitSearch();
-            dashboard.categoria.addValue('\n')
-            dashboard.waitSearch();
+        if(categoria.toLowerCase()!='vazio') {   
+            if (dashboard.categoria.isVisible()) {            
+                dashboard.categoria.addValue(categoria);
+                dashboard.waitSearch();
+                dashboard.categoria.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible()
+                this.habilitarFiltros('categoria')
+                dashboard.categoria.waitForVisible()
+                dashboard.categoria.addValue(categoria);
+                dashboard.waitSearch();
+                dashboard.categoria.addValue('\n')
+                dashboard.waitSearch();
+            }
         }
     }
 
@@ -111,19 +122,21 @@ export module filtro {
     }
 
     export function selecionarClienteInterno(clienteInterno: string) {
-        if (dashboard.clienteInterno.isVisible()) {
-            dashboard.clienteInterno.setValue(clienteInterno);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
-        else {
-            dashboard.filtros.waitForVisible()
-            this.habilitarFiltros('incluir cliente interno')
-            dashboard.clienteInterno.waitForVisible()
-            dashboard.clienteInterno.setValue(clienteInterno);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
+        if(clienteInterno.toLowerCase()!='vazio'){    
+            if (dashboard.clienteInterno.isVisible()) {
+                dashboard.clienteInterno.setValue(clienteInterno);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+            else {
+                dashboard.filtros.waitForVisible()
+                this.habilitarFiltros('incluir cliente interno')
+                dashboard.clienteInterno.waitForVisible()
+                dashboard.clienteInterno.setValue(clienteInterno);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+        }    
     }
 
     export function selecionarCnaeFuncionalidade(cnae: string) {
@@ -195,21 +208,23 @@ export module filtro {
     }
 
     export function selecionarFuncionalidade(funcionalidade: string) {
-        if (dashboard.funcionalidade.isVisible()) {
-            dashboard.funcionalidade.addValue(funcionalidade);
-            dashboard.waitSearch();
-            dashboard.funcionalidade.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('funcionalidade');
-            dashboard.funcionalidade.waitForVisible();
-            dashboard.funcionalidade.addValue(funcionalidade);
-            dashboard.waitSearch();
-            dashboard.funcionalidade.addValue('\n')
-            dashboard.waitSearch();
-        }
+        if(funcionalidade.toLowerCase()!="vazio"){    
+            if (dashboard.funcionalidade.isVisible()) {
+                dashboard.funcionalidade.addValue(funcionalidade);
+                dashboard.waitSearch();
+                dashboard.funcionalidade.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('funcionalidade');
+                dashboard.funcionalidade.waitForVisible();
+                dashboard.funcionalidade.addValue(funcionalidade);
+                dashboard.waitSearch();
+                dashboard.funcionalidade.addValue('\n')
+                dashboard.waitSearch();
+            }
+        }  
     }
 
     export function selecionarFuncionario(funcionario: string) {
@@ -231,50 +246,55 @@ export module filtro {
     }
 
     export function selecionarNovaFuncionalidade(novaFuncionalidade: string) {
-        if (dashboard.novaFuncionalidade.isVisible()) {
-            dashboard.novaFuncionalidade.setValue(novaFuncionalidade);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('novas funcionalidades');
-            dashboard.novaFuncionalidade.waitForVisible();
-            dashboard.novaFuncionalidade.addValue(novaFuncionalidade);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
+        if(novaFuncionalidade.toLowerCase()!='vazio'){ 
+            if (dashboard.novaFuncionalidade.isVisible()) {
+                dashboard.novaFuncionalidade.setValue(novaFuncionalidade);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('novas funcionalidades');
+                dashboard.novaFuncionalidade.waitForVisible();
+                dashboard.novaFuncionalidade.addValue(novaFuncionalidade);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
         }
     }
 
     export function selecionarPesoAbaixo(peso: string) {
-        if (dashboard.pesoAbaixo.isVisible()) {
-            dashboard.pesoAbaixo.setValue(peso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('peso abaixo de');
-            dashboard.pesoAbaixo.waitForVisible();
-            dashboard.pesoAbaixo.addValue(peso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
+        if(peso.toLowerCase()!='vazio'){    
+            if (dashboard.pesoAbaixo.isVisible()) {
+                dashboard.pesoAbaixo.setValue(peso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('peso abaixo de');
+                dashboard.pesoAbaixo.waitForVisible();
+                dashboard.pesoAbaixo.addValue(peso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+        }    
     }
 
     export function selecionarPesoAcima(peso: string) {
+      if (peso.toLowerCase()!='vazio')  
         if (dashboard.pesoAcima.isVisible()) {
-            dashboard.pesoAcima.setValue(peso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('peso acima de');
-            dashboard.pesoAcima.waitForVisible();
-            dashboard.pesoAcima.addValue(peso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
+                dashboard.pesoAcima.setValue(peso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('peso acima de');
+                dashboard.pesoAcima.waitForVisible();
+                dashboard.pesoAcima.addValue(peso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
     }
 
     export function selecionarProduto(produto: string) {
@@ -301,39 +321,43 @@ export module filtro {
     }
 
     export function selecionarSemUso(semUso: string) {
-        if (dashboard.semUso.isVisible()) {
-            dashboard.semUso.waitForVisible();
-            dashboard.semUso.setValue(semUso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('sem uso');
-            dashboard.semUso.waitForVisible();
-            dashboard.semUso.addValue(semUso);
-            dashboard.waitSearch();
-            browser.keys('\uE007');
-        }
+        if(semUso.toLowerCase()!='vazio'){    
+            if (dashboard.semUso.isVisible()) {
+                dashboard.semUso.waitForVisible();
+                dashboard.semUso.setValue(semUso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('sem uso');
+                dashboard.semUso.waitForVisible();
+                dashboard.semUso.addValue(semUso);
+                dashboard.waitSearch();
+                browser.keys('\uE007');
+            }
+        }    
     }
 
     export function selecionarVersao(versao: string) {
-        if (dashboard.versao.isVisible()) {
-            let dashboard: DashBoard = new DashBoard();
-            dashboard.versao.waitForVisible()
-            dashboard.versao.addValue(versao);
-            dashboard.waitSearch();
-            dashboard.versao.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('versão');
-            dashboard.versao.waitForVisible();
-            dashboard.versao.addValue(versao);
-            dashboard.waitSearch();
-            dashboard.versao.addValue('\n')
-            dashboard.waitSearch();
+        if(versao.toLowerCase()!="vazio"){
+            if (dashboard.versao.isVisible()) {
+                let dashboard: DashBoard = new DashBoard();
+                dashboard.versao.waitForVisible()
+                dashboard.versao.addValue(versao);
+                dashboard.waitSearch();
+                dashboard.versao.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('versão');
+                dashboard.versao.waitForVisible();
+                dashboard.versao.addValue(versao);
+                dashboard.waitSearch();
+                dashboard.versao.addValue('\n')
+                dashboard.waitSearch();
+            }
         }
     }
 
@@ -410,4 +434,5 @@ export module filtro {
             fail('Houve um erro ao carregar os gráficos')
         }
     }
-}
+
+ }

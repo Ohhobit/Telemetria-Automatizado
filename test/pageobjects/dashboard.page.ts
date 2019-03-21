@@ -42,6 +42,12 @@ export class DashBoard extends Page {
     pesquisaResult(result: string): WebElement { return browser.element('//ul/li[@class="select2-no-results" and text()="' + result + '"]') }
     //
     get cardResultados(): WebElement { return browser.element('//div[@class="row app-model-row"]') }
+
+    
+    confimrcaracter(carac:string):WebElement{return browser.element('#select2-result-label-231 >span[title="' + carac +'"]')  }
+
+
+
     // Erros e Avisos
     get avisoMsg(): WebElement { return browser.$('//div[@class="toast toast-warning"]') }
     get erroMsg(): WebElement { return browser.$('//div[@class="toast toast-error"]') }
