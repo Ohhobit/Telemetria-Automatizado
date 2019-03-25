@@ -23,9 +23,9 @@ export class Produto extends DashBoard {
         this.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho='#produto-uso-funcionalidades-grid'
         this.selectorGridClientes='div.modal-content.modal-custom-size.opened'
     }
-
-
-    //Botões
+    conteudo(selector): WebElement {return browser.element(selector)}
+    
+    //PageObject
     get btnClientes(): WebElement { return browser.element('//*[@ng-click="visualizarClientes()"]'); }
-
+    
 }

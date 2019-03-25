@@ -133,7 +133,7 @@ export function verificarResultadoConsulta() {
       break;
     
     case 'produto':
-      let produto:Produto = new Produto()
+      var produto:Produto = new Produto();
       //Pegando a imagem da tela resultados inteira
      
       // Printando todos os graficos e grids que precisam de algo mais para fica visivel
@@ -143,16 +143,20 @@ export function verificarResultadoConsulta() {
       if(dashboard.checkForMsgs()){
         fail('Ocorreu um erro ou aviso ao carregar os gráficos do  dashboard Produto')
       }
-      produto.selectorUsoDiarioDasFuncionalidadesPorProduto.waitForVisible()
+      produto.waitSearch()
+      produto.conteudo(produto.selectorUsoDiarioDasFuncionalidadesPorProduto).waitForVisible()
       //@ts-ignore
-      assertDiff(browser.checkElemet(produto.selectorUsoDiarioDasFuncionalidadesPorProduto,{width}))
+      assertDiff(browser.checkElement(produto.selectorUsoDiarioDasFuncionalidadesPorProduto,{width}))
       
      
       // Grid uso das funcionalidades
       produto.waitSearch()
-      produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho.waitForVisible()
+      
+      // produto.conteudo(produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho).waitForVisible()
+      
+        
       //@ts-ignore
-      assertDiff(browser.CheckElement(produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho,{width}))
+      assertDiff(browser.checkElement(produto.selectorDetalhamentoDeUsoDasFuncionalidadesPeloCaminho,{width}))
       
 
       // Grid Cliente
@@ -163,7 +167,7 @@ export function verificarResultadoConsulta() {
       produto.waitSearch()
       produto.gridClientes.btnGridMenu.waitForVisible();
       //@ts-ignore
-      assertDiff(browser.CheckElement(produto.selectorGridClientes,{width}))
+      assertDiff(browser.checkElement(produto.selectorGridClientes ,{width}))
       break;
 
     case 'funcionalidade':

@@ -54,7 +54,7 @@ export module filtro
                 dashboard.waitSearch();
                 dashboard.confimrcaracter(caracteristica).waitForVisible()
                 dashboard.confimrcaracter(caracteristica).click()
-                dashboard.caracteristica.addValue('\n')
+                // dashboard.caracteristica.addValue('\n')
                 dashboard.waitSearch();
             }
             else {
@@ -65,7 +65,7 @@ export module filtro
                 dashboard.waitSearch();
                 dashboard.confimrcaracter(caracteristica).waitForVisible()
                 dashboard.confimrcaracter(caracteristica).click()
-                dashboard.caracteristica.addValue('\n')
+                // dashboard.caracteristica.addValue('\n')
                 dashboard.waitSearch();
             }
        }

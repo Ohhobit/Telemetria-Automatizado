@@ -44,7 +44,7 @@ export class DashBoard extends Page {
     get cardResultados(): WebElement { return browser.element('//div[@class="row app-model-row"]') }
 
     
-    confimrcaracter(carac:string):WebElement{return browser.element('#select2-result-label-231 >span[title="' + carac +'"]')  }
+    confimrcaracter(carac:string):WebElement{return browser.element('span[title="' + carac +'"]')  }
 
 
 

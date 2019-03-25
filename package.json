@@ -9,7 +9,7 @@
     "test-results": "./node_modules/.bin/wdio wdio.conf.js && allure generate --clean && allure open",
     "start": "node server.js"
   },
-  "author": "Felippe Tavares de Oliveira",
+  "author": "Paulo",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.1.3",
