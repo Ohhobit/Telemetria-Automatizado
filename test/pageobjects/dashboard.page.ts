@@ -13,6 +13,8 @@ export class DashBoard extends Page {
     get btnCliente(): WebElement { return browser.element('//a/div/div[@class="title" and text()="Cliente"]'); }
     get btnColaboradores(): WebElement { return browser.element('//a/div/div[@class="title" and text()="Colaboradores"]'); }
     get btnConsultar(): WebElement { return browser.element('//button[@class="btn btn-size ng-scope btn-primary btn-block"]'); }
+    get titlepagina (): WebElement { return browser.element('//div[@class="page-title"]//span[@class="title" and text()="Visão Geral"]'); }
+
 
     //inputs
     get dataInicial(): WebElement { return browser.element('//div[@id="start_date_filterSelect2"]//input') }
@@ -63,6 +65,10 @@ export class DashBoard extends Page {
         this.btnGeral.waitForVisible();
     }
 
+    waitfortitleload(){
+        return  this.titlepagina.waitForVisible();
+    }
+
     waitSearch() {
         if (browser.isExisting('//*[@class="select2-input select2-focused select2-active"]') == true) {
             browser.waitForExist('//*[@class="select2-input select2-focused select2-active"]', 10000, true)
@@ -84,8 +90,6 @@ export class DashBoard extends Page {
                 }
 
             }
-
-
 
         }
 

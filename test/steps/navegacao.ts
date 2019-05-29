@@ -129,5 +129,12 @@ export module navegacao {
         }
         
     }
+
+    export function acessarconfiguracao() {
+        menulateral.logo.waitForVisible();
+        menulateral.opens();
+        menulateral.configuracoes.click(); 
+        browser.pause(5000);    
+    }
     
 }

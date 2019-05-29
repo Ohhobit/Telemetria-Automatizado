@@ -3,6 +3,8 @@ import { filtro }  from '../steps/filtros'
 import { navegacao } from '../steps/navegacao'
 import { Graficos } from '../steps/graficos';
 import { fail } from 'assert';
+import { DashBoard } from "../pageobjects/dashboard.page";
+import{ Configuracao} from "../steps/configuracao.step"
 
 
 defineSupportCode(function({ When }) {
@@ -26,7 +28,7 @@ defineSupportCode(function({ When }) {
   })
 
   When(/^Faço uma consulta com "([^"]*)"$/, function(consulta) {
-    consulta = consulta.split(',');
+   consulta = consulta.split(',');
    consulta.forEach(element => {
      switch (element.toLowerCase().trim()){
 
@@ -166,7 +168,7 @@ defineSupportCode(function({ When }) {
 
   When(/^habilito a coluna de "([^"]*)" no grid "([^"]*)"$/, function(colunmName,gridTitle) {
       colunmName = colunmName.charAt(0).toUpperCase() + colunmName.slice(1).toLowerCase();
-     grids.habilitarColunaGrid(colunmName,gridTitle)
+      grids.habilitarColunaGrid(colunmName,gridTitle)
   });
 
   When(/^Clico em remover o final de semana do grafico "([^"]*)"$/, function(grafico) {
@@ -193,5 +195,28 @@ defineSupportCode(function({ When }) {
 
 
   });
+
+  
+
+  When (/^a página carregar$/,function(){
+    const dashboard = new DashBoard();
+          dashboard.waitfortitleload()
+
+
+  });
+
+  When(/^selecionar o produto "([^"]*)"$/,function(Produto){
+    
+     
+    Configuracao.Selecionarprodutoconfiguracao(Produto)
+     
+  });
+  
+  When(/^selecionar o setor "([^"]*)"$/,function(setor){
+    
+      Configuracao.Selecionarsetorconfiguracao(setor)
+    
+ }); 
+
 
 });

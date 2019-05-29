@@ -12,6 +12,7 @@ export class GridModal extends Grid  {
     }
     get btnClose(): WebElement {return browser.$('//div[@class="modal-header ng-scope"]/button[@aria-label="Close"]')}
     get btnModalMenu(): WebElement {return browser.element('//div[@class="modal-body ng-scope"]//div[@ng-click="toggleMenu()"]')}
+    get btnexpandir():WebElement{return browser.element('//div[@class="ui-grid-tree-base-row-header-buttons ng-scope ui-grid-icon-plus-squared"]')}
 }
 
 

@@ -8,6 +8,7 @@ import { Setup } from '../steps/setup';
 import { Page } from '../pageobjects/Page';
 import { navegacao } from '../steps/navegacao';
 import {ValidaGraficoDashboardGeral } from '../steps/Validargraficos.step'
+import {Configuracao } from '../steps/configuracao.step'
 
 defineSupportCode(function({ Then }) {
 
@@ -78,11 +79,20 @@ defineSupportCode(function({ Then }) {
   Then (/^O gráfico "([^"]*)" devem carregar os valores de acordo com o filtro de data$/,function(dasboard){
     
     ValidaGraficoDashboarddGeral(dasboard)
-    
       
   })
 
+  Then(/^Os gráficos devem carregar os dados dos últimos 30 dias$/,function(){
+    verificarElementosVisaoGeral()
+  }); 
 
+  Then(/^A grid de funcionalidade será carregada$/,function(){
+    
+    Configuracao​​.VerificarGridfuncionalidade()
+
+
+
+  });
 
 
 

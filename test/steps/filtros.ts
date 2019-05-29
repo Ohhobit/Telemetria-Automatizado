@@ -48,6 +48,7 @@ export module filtro
     }
 
     export function selecionarCaracteristica(caracteristica: string) {
+        browser.pause(500)
         if(caracteristica.toLowerCase()!="vazio"){
             if (dashboard.caracteristica.isVisible()) {
                 dashboard.caracteristica.addValue(caracteristica);
@@ -208,6 +209,9 @@ export module filtro
     }
 
     export function selecionarFuncionalidade(funcionalidade: string) {
+        console.log('esperar 5segundos')
+        browser.pause(5000)
+        
         if(funcionalidade.toLowerCase()!="vazio"){    
             if (dashboard.funcionalidade.isVisible()) {
                 dashboard.funcionalidade.addValue(funcionalidade);
@@ -228,21 +232,23 @@ export module filtro
     }
 
     export function selecionarFuncionario(funcionario: string) {
-        if (dashboard.funcionario.isVisible()) {
-            dashboard.funcionario.addValue(funcionario);
-            dashboard.waitSearch();
-            dashboard.funcionario.addValue('\n')
-            dashboard.waitSearch();
-        }
-        else {
-            dashboard.filtros.waitForVisible();
-            this.habilitarFiltros('funcionário');
-            dashboard.funcionario.waitForVisible();
-            dashboard.funcionario.addValue(funcionario);
-            dashboard.waitSearch();
-            dashboard.funcionario.addValue('\n')
-            dashboard.waitSearch();
-        }
+        if (funcionario.toLowerCase()!="vazio"){
+            if (dashboard.funcionario.isVisible()) {
+                dashboard.funcionario.addValue(funcionario);
+                dashboard.waitSearch();
+                dashboard.funcionario.addValue('\n')
+                dashboard.waitSearch();
+            }
+            else {
+                dashboard.filtros.waitForVisible();
+                this.habilitarFiltros('funcionário');
+                dashboard.funcionario.waitForVisible();
+                dashboard.funcionario.addValue(funcionario);
+                dashboard.waitSearch();
+                dashboard.funcionario.addValue('\n')
+                dashboard.waitSearch();
+            }
+        }   
     }
 
     export function selecionarNovaFuncionalidade(novaFuncionalidade: string) {
@@ -392,6 +398,7 @@ export module filtro
         browser.pause(500)
         dashboard.btnConsultar.click();
         dashboard.waitSearch();
+        
     }
 
     function checarFiltroData(data: string, idName: string): boolean {

@@ -12,7 +12,7 @@ export class MenuLateral extends Page  {
 
   get dashboards():WebElement   { return browser.element('//a/span[text()="Dashboards"]'); }
 
-  get configuracoes():WebElement        { return browser.element(('//a[@href="#/configuration"]//span[@class="title" and text()="Configurações"]')); }
+  get configuracoes():WebElement { return browser.element(('//a[@href="#/configuration"]//span[@class="title" and text()="Configurações"]')); }
 
   btnProduto(produtoNome:string):WebElement {return browser.element('//div[@id="dropdown-apps"]//a[text()="'+produtoNome+'"]')}
 

@@ -8,6 +8,8 @@ import {Setup}  from '../steps/setup'
 /////Sentenças //////////
 import { navegacao } from '../steps/navegacao'
 import { login } from '../steps/login'
+
+
 defineSupportCode(function({ Given }) {
 
   Given(/^Estou logado no sistema com um usuário administrador$/, function(){
@@ -27,7 +29,7 @@ defineSupportCode(function({ Given }) {
     navegacao.selecionarDashboard(dashboard);
   });
   
-  Given(/^Estou na visao geral$/, function(){
+  Given(/^Estou no dashboard Visão Geral$/, function(){
     navegacao.IrParaVisaoGeral();    
   });
 
@@ -50,12 +52,20 @@ defineSupportCode(function({ Given }) {
     {
         login.UsuarioComum()
     };
-  Given(/^estou na tela de login do Telemetria$/,function(){
-     login.UsuarioAdm()   
-  
-   })
-
 
   });
 
+  Given(/^estou na tela de login do Telemetria$/,function(){
+     login.UsuarioAdm()   
+  
+   });
+
+  Given(/^Estou no painel de configuração$/,function(){
+     navegacao.acessarconfiguracao();
+
+  });
+  
+
 });
+
+

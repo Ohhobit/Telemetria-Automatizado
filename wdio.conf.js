@@ -1,4 +1,3 @@
-
 const defaultTimeoutInterval = process.env.DEBUG ? (60 * 60 * 500) : 900000;
 const settings = require('./settings.json')
 var path = require('path');
@@ -30,7 +29,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-     
+
     specs: [
         './test/features/*.feature'
     ],
@@ -69,11 +68,11 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 1,
+        maxInstances: 3,
         //
         browserName: 'chrome',
         chromeOptions: {
-            args: ['start-maximized' /*,'headless'*/]
+            args: ['start-maximized' /*,'headless'*/ ]
         }
     }],
     //
@@ -107,14 +106,22 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    
+
     // Maciel-PC
     //   baseUrl: 'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2F172.16.72.23:8000%2Fapi%2Fretorno-passaporte%2F',
     
-    //TesteDNT
-    baseUrl:'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2Ftelemetria.alterdata.com.br%2Fapi%2Fretorno-passaporte%2F',
+   
+    //    baseUrl: 'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2Ftelemetria-telemetria-staging.cirrus.alterdata.com.br%2Fapi%2Fretorno-passaporte%2F',
 
-    //
+    //Official
+     baseUrl: 'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2Ftelemetria.alterdata.com.br%2Fapi%2Fretorno-passaporte%2F',
+
+    // staging 
+    // baseUrl:'http://telemetria-telemetria-staging.cirrus.alterdata.com.br',
+
+    //    baseURL:'https://passaporte2.alterdata.com.br/?idProduto=2e0458a8a9515f23fc22df7e80ab7be5&nomeProduto=Telemetria&continue=http:%2F%2Ftelemetria-telemetria-staging.cirrus.alterdata.com.br%2Fapi%2Fretorno-passaporte%2F',
+
+
     // Default timeout for all waitFor* commands.
     waitforTimeout: 15000,
     //
@@ -147,7 +154,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['cucumberjira', 'visual-regression-cucumber', 'selenium-standalone'/*,'docker'*/],//
+    services: ['cucumberjira', 'visual-regression-cucumber', 'selenium-standalone' /*,'docker'*/ ], //
     seleniumLogs: './logs',
     jiraConfig: {
         host: 'http://jira.alterdata.com.br',
@@ -157,15 +164,15 @@ exports.config = {
         featureDir: './test/features/' //deve ser o mesmo diretório das specs
     },
 
-   /* dockerLogs: './logs',
-    dockerOptions: {
-        image: 'selenium/standalone-chrome',
-        healthCheck: 'http://localhost:4444',
-        options: {
-            p: ['4444:4444'],
-            shmSize: '2g'
-        }
-    },*/
+    /* dockerLogs: './logs',
+     dockerOptions: {
+         image: 'selenium/standalone-chrome',
+         healthCheck: 'http://localhost:4444',
+         options: {
+             p: ['4444:4444'],
+             shmSize: '2g'
+         }
+     },*/
 
     visualRegression: {
         compare: new VisualRegressionCompare.LocalCompare({
@@ -175,7 +182,10 @@ exports.config = {
             misMatchTolerance: 0.00,
         }),
         viewportChangePause: 300,
-        viewports: [{ width: 1440, height: 900 }],
+        viewports: [{
+            width: 1440,
+            height: 900
+        }],
         orientations: [],
     },
 
@@ -206,37 +216,51 @@ exports.config = {
     framework: 'cucumber',
 
     cucumberOpts: {
-        require: ['./test/stepDefinitions/given.js', './test/stepDefinitions/when.js', './test/stepDefinitions/then.js'],   // <string[]> (file/dir) require files before executing features
-        backtrace: true,    // <boolean> show full backtrace for errors
+        require: ['./test/stepDefinitions/given.js', './test/stepDefinitions/when.js', './test/stepDefinitions/then.js'], // <string[]> (file/dir) require files before executing features
+        backtrace: true, // <boolean> show full backtrace for errors
         compiler: ['ts:ts-node/register'], // <string[]> filetype:compiler used for processing required features
-        failAmbiguousDefinitions: true,       // <boolean< Treat ambiguous definitions as errors
-        dryRun: false,      // <boolean> invoke formatters without executing steps
-        failFast: false,    // <boolean> abort the run on first failure
-        ignoreUndefinedDefinitions: false,    // <boolean> Enable this config to treat undefined definitions as warnings
-        name: [],           // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-        snippets: true,     // <boolean> hide step definition snippets for pending steps
+        failAmbiguousDefinitions: true, // <boolean< Treat ambiguous definitions as errors
+        dryRun: false, // <boolean> invoke formatters without executing steps
+        failFast: false, // <boolean> abort the run on first failure
+        ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings
+        name: [], // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        snippets: true, // <boolean> hide step definition snippets for pending steps
         format: ['json:target./cucumber.json'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        colors: true,       // <boolean> disable colors in formatter output
-        snippets: false,    // <boolean> hide step definition snippets for pending steps
-        source: false,      // <boolean> hide source uris
-        profile: [],        // <string[]> (name) specify the profile to use
-        strict: true,       // <boolean> fail if there are any undefined or pending steps
-        tagExpression: 'not @Pending',      // <string> (expression) only execute the features or scenarios with tags matching the expression, see https://docs.cucumber.io/tag-expressions/
-        timeout: defaultTimeoutInterval,    // <number> timeout for step definitions
-        tagsInTitle: false,                 // <boolean> add cucumber tags to feature or scenario name
-        snippetSyntax: undefined,           // <string> specify a custom snippet syntax
+        colors: true, // <boolean> disable colors in formatter output
+        snippets: false, // <boolean> hide step definition snippets for pending steps
+        source: false, // <boolean> hide source uris
+        profile: [], // <string[]> (name) specify the profile to use
+        strict: true, // <boolean> fail if there are any undefined or pending steps
+        tagExpression: 'not @Pending', // <string> (expression) only execute the features or scenarios with tags matching the expression, see https://docs.cucumber.io/tag-expressions/
+        timeout: defaultTimeoutInterval, // <number> timeout for step definitions
+        tagsInTitle: false, // <boolean> add cucumber tags to feature or scenario name
+        snippetSyntax: undefined, // <string> specify a custom snippet syntax
     },
     //
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['allure', 'spec'],
+    // reporters: ['allure', 'spec'],
+    // reporterOptions: {
+    //     junit: {
+    //         outputDir: './test/xunit/'
+    //     },
+    //     allure: {
+    //         outputDir: 'allure-results',
+    //         disableWebdriverStepsReporting: true,
+    //         useCucumberStepReporter: true
+    //     }
+    // },
+
+    reporters: ['multiple-cucumber-html'],
     reporterOptions: {
-        junit: { outputDir: './test/xunit/' },
-        allure: {
-            outputDir: 'allure-results',
-            disableWebdriverStepsReporting: true,
-            useCucumberStepReporter: true
+        htmlReporter: {
+            jsonFolder: './tmp',
+            reportFolder: `./tmp/report`,
+            openReportInBrowser:true,
+            removeOriginalJsonReportFile:true,
+            removeExistingJsonReportFile:true
+            // ... other options, see Options
         }
     },
     //reporterOptions: { 'outputDir': 'outputDir',filename: 'wdio-results', 'allure-addons': { outputDir: 'allure-results', debug: true, debugSeleniumCommand: true } },
@@ -292,15 +316,17 @@ exports.config = {
      * @param {Object} suite suite details
      */
     beforeFeature: function (feature) {
-        browser.url('');
-        browser.waitForVisible('//input[@id="email-login"]');
-        browser.waitForExist('//div[@id="modal-passaporte-loading" and @class="modal fade"]', 30000);
-        browser.pause(500);
-        browser.addValue('//input[@id="email-login"]', settings.usuario_matriz.usuario);
-        browser.addValue('//input[@type="password"]', settings.usuario_matriz.senha);
-        browser.waitForEnabled('//button[@id="login-passaporte"]');
-        browser.click('//button[@id="login-passaporte"]');
-        browser.waitForVisible('//div[@ng-bind="app.name" and text()="Pack"]', 25000);
+        // if (feature.scenarios[0].name != 'Acessar o dashboard Visão geral') {    
+            browser.url('');
+            browser.waitForVisible('//input[@id="email-login"]');
+            browser.waitForExist('//div[@id="modal-passaporte-loading" and @class="modal fade"]', 30000);
+            browser.pause(500);
+            browser.addValue('//input[@id="email-login"]', settings.usuario_matriz.usuario);
+            browser.addValue('//input[@type="password"]', settings.usuario_matriz.senha);
+            browser.waitForEnabled('//button[@id="login-passaporte"]');
+            browser.click('//button[@id="login-passaporte"]');
+            browser.waitForVisible('//div[@ng-bind="app.name" and text()="Pack"]', 25000);
+        // }
     },
 
     afterScenario: function (scenario) {
